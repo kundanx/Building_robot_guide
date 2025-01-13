@@ -1,0 +1,196 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="english" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Building fully Autonoous robot guide! &mdash; Getting started with sphinx 2024 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=a58f0d7d"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="#" class="icon icon-home">
+            Getting started with sphinx
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Building fully Autonoous robot guide!</a><ul>
+<li><a class="reference internal" href="#introduction">Introduction</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ros">ROS</a><ul>
+<li><a class="reference internal" href="#how-to-get-started">How to get Started</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">Getting started with sphinx</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Building fully Autonoous robot guide!</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="building-fully-autonoous-robot-guide">
+<span id="documentation-home"></span><h1>Building fully Autonoous robot guide!<a class="headerlink" href="#building-fully-autonoous-robot-guide" title="Link to this heading"></a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h2>
+<p>This documentation contains everything we learnt(batch 2078 members) while building robots for ABU Robocon 2024, vietnam.
+To give an overview, our main task was to develop 2 robots: one automatic robot and one manual/automatic robot</p>
+<ul class="simple">
+<li><p>Automatic robot had to be capable of ball selection based on color of the ball and self navigation with run-time decisions</p></li>
+<li><p>Manual robot had to be eqquiped with ball shooting mechanism and item (seedling) pick-drop mechanism.</p></li>
+</ul>
+<p>This section specifically deals with development of <strong>automatic robot</strong>. The key concepts used in this robot are:</p>
+<ol class="arabic simple">
+<li><p>ROS2 framewrok</p></li>
+<li><p>OpenCV</p></li>
+<li><p>Nav2 ros package</p></li>
+<li><p>BehaviorTree</p></li>
+<li><p>Linefollower</p></li>
+</ol>
+</section>
+</section>
+<section id="ros">
+<h1>ROS<a class="headerlink" href="#ros" title="Link to this heading"></a></h1>
+<p>ROS( Robot operating System) is framework used for robot development. Why ros and what are its features of ros are available in internet but some of the benifits which we felt are
+as follows.</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>ROS allows easy data flow between various components of the robot. Such as:</dt><dd><ol class="arabic simple">
+<li><p>Easy communication between multiple robots</p></li>
+<li><p>Easy data flow between various functions/algorithms.</p></li>
+<li><p>Allows a particular system(algorithms) to be independent of other systems.(i.e. Source of Input to a system can be anything, like a script(ros node) which produces fake odometry data)</p></li>
+</ol>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Allows easier intergration of work done by others programmers. In our case:</dt><dd><ol class="arabic simple">
+<li><p>Linefollower algorithm, openCV pipeline and navigation algorithms were developed independent to each other but we had defined what are the inputs and outputs of the system are.</p></li>
+</ol>
+</dd>
+</dl>
+</li>
+<li><p>Huge collection of packages for all sorts of work (Localization, odometry, Imu, self navigation, Slam, Transformation, etc)</p></li>
+</ul>
+<section id="how-to-get-started">
+<h2>How to get Started<a class="headerlink" href="#how-to-get-started" title="Link to this heading"></a></h2>
+<p>Even if you are complete beginner to ros ,you can follow these guidelines and become quite good actually.</p>
+<ol class="arabic simple">
+<li><dl class="simple">
+<dt>Here are two playlist which will help you to have an overview of what ros is.</dt><dd><ul class="simple">
+<li><p><a class="reference external" href="https://www.youtube.com/playlist?list=PLunhqkrRNRhYYCaSTVP-qJnyUPkTxJnBt">https://www.youtube.com/playlist?list=PLunhqkrRNRhYYCaSTVP-qJnyUPkTxJnBt</a></p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/playlist?list=PLunhqkrRNRhYAffV8JDiFOatQXuU-NnxT">https://www.youtube.com/playlist?list=PLunhqkrRNRhYAffV8JDiFOatQXuU-NnxT</a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>I encourage beginners to watch these videos in sequence without attempting to write code initially.
+This will provide an overview of how ROS works, what nodes are, and how packages are implemented.
+After completing the videos once, you can rewatch them and write your own code alongside.</p>
+</div>
+<ol class="arabic simple" start="2">
+<li><dl class="simple">
+<dt>After simulating your robot in gazebo or igntion, you should develop your own turtle-bot.</dt><dd><p>Simulation work is very easy, everything automatically (If your are beginner like i was, you will have hard time
+understanding how data flows and which part is generating the command velocities.)</p>
+</dd>
+</dl>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This documentation was done by members of robotics club of batch 2078. The team participate in ABU robocon 2024.
+The documentation is based on the experience and knowledge gained while building the robots.</p>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+</section>
+<section id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Link to this heading"></a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Kundan siwakoti.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
